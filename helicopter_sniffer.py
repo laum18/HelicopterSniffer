@@ -16,6 +16,13 @@ class App(QMainWindow):
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
+
+        # basic menu
+        mainMenu = self.menuBar()
+        fileMenu = mainMenu.addMenu('File')
+        editMenu = mainMenu.addMenu('Edit')
+        mainMenu.setNativeMenuBar(False)
+
         # status bar
         self.statusBar().showMessage('Message in statusbar.')
         self.show()
@@ -24,4 +31,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = App()
     sys.exit(app.exec_())
-
