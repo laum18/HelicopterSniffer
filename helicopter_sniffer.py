@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QLabel, QPlainTextEdit, QVBoxLayout#, QtGui
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QLabel, QPlainTextEdit, QVBoxLayout, QTableWidget,QTableWidgetItem#, QtGui
+from PyQt5.QtCore import pyqtSlot
 
 
 class App(QMainWindow):
@@ -9,8 +10,8 @@ class App(QMainWindow):
         self.title = 'Helicopter Sniffer'
         self.left = 10
         self.top = 10
-        self.width = 640
-        self.height = 480
+        self.width = 1000
+        self.height = 700
         self.initUI()
 
     def initUI(self):
@@ -46,17 +47,32 @@ class App(QMainWindow):
         
         # labels
         trafficLabel = QLabel('Traffic', self)
-        trafficLabel.move(100,50)
+        trafficLabel.move(190, 55)
+
         childLabel = QLabel('Child/Device', self)
-        childLabel.move(425, 50)
+        childLabel.move(735, 55)
+
         websitesLabel = QLabel('Websites Visited', self)
-        websitesLabel.move(75, 250)
+        websitesLabel.move(160, 375)
         
         # text section
-#        self.b = QPlainTextEdit(self)
-#        self.b.insertPlainText("You can write text here.\n")
-#        self.b.move(10,10)
-#        self.b.resize(400,200)
+        trafficText = QPlainTextEdit(self)
+        trafficText.insertPlainText("")
+        trafficText.move(25,80)
+        trafficText.resize(400,250)
+        trafficText.setDisabled(True)
+        
+        childText = QPlainTextEdit(self)
+        childText.insertPlainText("")
+        childText.move(575,80)
+        childText.resize(400,250)
+        childText.setDisabled(True)
+        
+        websitesText = QPlainTextEdit(self)
+        websitesText.insertPlainText("")
+        websitesText.move(25,400)
+        websitesText.resize(400,250)
+        websitesText.setDisabled(True)
 
 
         self.show()
