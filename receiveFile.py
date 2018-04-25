@@ -6,7 +6,7 @@ port = 30000
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((host, port))
 
-sFileName = "website.txt"
+sFileName = "websites.txt"
 sData = "Temp"
 
 while True:

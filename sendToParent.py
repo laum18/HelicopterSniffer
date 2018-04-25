@@ -9,12 +9,17 @@ print("waiting for connection")
 print("accepted connection")
 
 while True:        
+    s.setblocking(1)
+    m = s.recv(1024)
+    print(m)
     with open("websites.txt", 'r') as f:
         content = f.read(1024)
         while content:
             s.send(content.encode())
+            print("data sent")
             content = f.read(1024)    
-    time.sleep(40)
+    #print("sleeping")
+    #time.sleep(5)
     
 s.close()
 sock.close()
