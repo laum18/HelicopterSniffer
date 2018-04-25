@@ -1,6 +1,6 @@
 import socket
 
-host = '10.17.3.75'
+host = '10.17.163.221'
 port = 30000
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

@@ -9,10 +9,11 @@ class DataLaunch(threading.Thread):
 
     def run(self):
         call(["./a.out"])
+        return
 
 class SendToParent():
     def run(self):
-        os.system("sendToParent.py")
+        os.system("py sendToParent.py")
 
 if __name__ == "__main__":
     dl = DataLaunch()
