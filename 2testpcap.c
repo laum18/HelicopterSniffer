@@ -22,7 +22,6 @@ int hostname_to_ip(char * hostname , char* ip);
 
 int main(int argc, char **argv)
 {
-    
     char *device;
     char error_buffer[PCAP_ERRBUF_SIZE];
     int packet_count_limit = 0;
@@ -34,9 +33,6 @@ int main(int argc, char **argv)
     int snapshot_length = 1024; //BUFSIZ;
     int total_packet_count = 0;
     int promisc = 1; //set promiscuous mode
-    
-    
-    
     
     
     
@@ -55,16 +51,6 @@ int main(int argc, char **argv)
         subnet_mask = 0;
     }
     
-
-
-    /*create device
-    handle = pcap_create(*device, error_buffer);
-    pcap_set_promisc(handle, 1);
-    pcap_set_snaplen(handle, snapshot_length);
-    pcap_set_timeout(handle, timeout_limit);
-    pcap_activate(handle);
-    */
-    
     
     //get packets
     handle = pcap_open_live(device, snapshot_length, promisc, timeout_limit, error_buffer);
@@ -74,6 +60,8 @@ int main(int argc, char **argv)
         exit(1);
     }
     
+    
+    //get packets only for port 80, i.e. HTTP
     struct bpf_program fp;
     char filter_exp[] = "port 80";
     if(pcap_compile(handle, &fp, filter_exp, 0, ip) == -1) {
@@ -86,21 +74,23 @@ int main(int argc, char **argv)
     }
     
     
+    //continuously get packets until termination
     pcap_loop(handle, total_packet_count, my_packet_handler, NULL);
     
     return 0;
 }
 
 
+
+//processes packets
 void my_packet_handler(u_char* args, const struct pcap_pkthdr* packet_header, const u_char* packet)
 {
     struct ether_header * eth_header;
     eth_header = (struct ether_header *) packet;
     if(ntohs(eth_header->ether_type) != ETHERTYPE_IP) {
-        //printf("Not and IP packet. Skipping...\n\n");
+        //printf("Not an IP packet. Skipping...\n\n");
         return;
     }
-    
     
     //printf("Packet capture length: %d\n", packet_header->caplen);
     //printf("Packet total length: %d\n", packet_header->len);
