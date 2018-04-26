@@ -18,38 +18,129 @@
   <property name="windowTitle">
    <string>Helicopter Sniffer</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(206, 229, 255);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>80</y>
-      <width>571</width>
-      <height>441</height>
+      <x>80</x>
+      <y>70</y>
+      <width>631</width>
+      <height>431</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QLabel" name="traffic">
          <property name="font">
           <font>
            <family>Silom</family>
+           <pointsize>15</pointsize>
           </font>
          </property>
          <property name="text">
           <string>Traffic</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextBrowser" name="textBrowser"/>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>7</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>-1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="website">
+           <property name="font">
+            <font>
+             <family>Monaco</family>
+             <pointsize>13</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Website</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="time">
+           <property name="font">
+            <font>
+             <family>Monaco</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>Time</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>-1</number>
+         </property>
+         <item>
+          <widget class="QTextBrowser" name="display_webtraffic">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 12pt &quot;Monaco&quot;;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTextBrowser" name="timeInfo">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
+font: 12pt &quot;Monaco&quot;;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
+     </item>
+     <item row="2" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_3"/>
      </item>
      <item row="0" column="2">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -58,61 +149,54 @@
          <property name="font">
           <font>
            <family>Silom</family>
+           <pointsize>15</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Child/Device</string>
+          <string>Child's Name</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
-         <item>
-          <property name="text">
-           <string>Carl</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Johnny boy</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Balinda</string>
-          </property>
-         </item>
+        <widget class="QTextEdit" name="textEdit">
+         <property name="font">
+          <font>
+           <family>Monaco</family>
+           <pointsize>16</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextBrowser" name="textBrowser_2"/>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>320</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
      <item row="1" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QLabel" name="websites_visited">
-         <property name="font">
-          <font>
-           <family>Silom</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Websites Visited</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignHCenter|Qt::AlignTop</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QTextBrowser" name="textBrowser_3"/>
-       </item>
-      </layout>
+      <layout class="QVBoxLayout" name="verticalLayout_3"/>
      </item>
     </layout>
    </widget>
