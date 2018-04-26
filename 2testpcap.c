@@ -131,40 +131,65 @@ void my_packet_handler(u_char* args, const struct pcap_pkthdr* packet_header, co
     //printf("Memory address where payload begins: %p\n\n", payload);
     
     
+    //finds the "GET / ..." http packets to get the website
     char begin[7];
-    //memcpy(begin,payload, 5);
     int i;
     for(i = 0; i < 6; i++)
         begin[i] = payload[i];
     begin[6] = '\0';
-    //printf("Got: %s\n", begin);
-    if(strcmp(begin, "GET / ") == 0) {
+    if(strcmp(begin, "GET / ") == 0) { //start parsing for host
         char host[200];
+        char hostLast[200];
+        int len = 0;
         
-        for(i = 0; i < strlen(host); i++)
+        for(i = 0; i < strlen(host); i++) //fill with zeros because it is being overwritten
             host[i] = '0';
         
-        for(i = 0; i < 200; i++) {
-            host[i] = payload[i+21];
-            //printf("begin[i]: %c\n", host[i]);
-            if(payload[i+22] == '.' && payload[i+23] == 'c' && payload[i+24] == 'o' && payload[i+25] == 'm') {
-                host[i+1] = '.';
-                host[i+2] = 'c';
-                host[i+3] = 'o';
-                host[i+4] = 'm';
+        for(i = 0; i < 200; i++) { //gets host part of http header by going until newline
+            if(payload[i+21] == '\r')
                 break;
-            }
+            host[i] = payload[i+21];
+            len += 1;
         }
-        //printf("host[1]: %c\n", host[1]);
-        if(host[1] != 'w') {
+        
+        //checking for duplicates
+        int check = 1;
+        int count1 = 0;
+        int count2 = 0;
+        int count3 = 0;
+        
+        for(i = 0; i < len; i++) {
+            if(host[i] == hostLast[i]) {
+                count1 += 1;
+                printf("host[i]: %c, hostLast[i]: %c\n", host[i], hostLast[i]);
+            }
+            if(host[i+4] == hostLast[i]) {
+                count2 += 1;
+                printf("host[i+4]: %c, hostLast[i]: %c\n", host[i+4], hostLast[i]);
+            }
+            if(host[i] == hostLast[i+4]) {
+                count3 += 1;
+                printf("host[i]: %c, hostLast[i+4]: %c\n", host[i], hostLast[i+4]);
+            }
+            
+        }
+        
+        if(count1 >= len || count2 >= len || count3 >= len) {
+            check = 0;
+            printf("set to zero\n");
+        }
+        
+        
+        //writing to file
+        if(check == 1) {
             printf("host: %s\n", host);
             FILE * websiteFile = fopen("websites.txt", "a");
-            for(i = 0; i < strlen(host); i++)
+            for(i = 0; i < strlen(host); i++) {
                 if(host[i] != '0')
                     fputc(host[i], websiteFile);
                 else
                     break;
-            
+            }
             time_t rawtime;
             struct tm * timeinfo;
             time(&rawtime);
@@ -176,10 +201,15 @@ void my_packet_handler(u_char* args, const struct pcap_pkthdr* packet_header, co
             fclose(websiteFile);
         }
         
-               
-        //printf("\nPAYLOAD:\n%s\n\n", payload);
         
+        //storing last host name
+        for(i = 0; i < 200; i++)
+            hostLast[i] = host[i];
     }
+        
+        
+        //printf("\nPAYLOAD:\n%s\n\n", payload);
+    
     
     
     

@@ -1,18 +1,16 @@
- mcdonalds.com, Tue Apr 24 22:50:10 2018
+ xfinity.com, Wed Apr 25 21:21:57 2018
 
- thecheesecakefactory.com, Tue Apr 24 22:50:20 2018
+ pandaexpress.com, Wed Apr 25 21:23:17 2018
 
- jackinthebox.com, Tue Apr 24 22:55:50 2018
+ www.pandaexpress.com, Wed Apr 25 21:23:17 2018
 
- tacobell.com, Tue Apr 24 22:56:10 2018
+ kmart.com, Wed Apr 25 21:23:27 2018
 
- burgerking.com, Tue Apr 24 22:56:30 2018
+ www.kmart.com, Wed Apr 25 21:23:27 2018
 
- nike.com, Tue Apr 24 22:56:50 2018
+ www.kmart.com, Wed Apr 25 21:27:06 2018
 
- darden.com, Tue Apr 24 22:57:40 2018
+ olivegarden.com, Wed Apr 25 21:27:06 2018
 
- capitalone.com, Tue Apr 24 22:58:00 2018
-
- chase.com, Tue Apr 24 22:58:10 2018
+ www.olivegarden.com, Wed Apr 25 21:27:06 2018
 
