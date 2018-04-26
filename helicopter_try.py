@@ -32,7 +32,7 @@ class AppWindow(QMainWindow):
         print("in printTraffic")
         sData = "Temp"
         self.s.send("Ready".encode()) #tell the other host we are ready to receive data
-        sData = self.s.recv(4096) # store the data that the other host sends us
+        sData = self.s.recv(8192) # store the data that the other host sends us
 
         print("ran receivefile")
 
@@ -56,6 +56,7 @@ class AppWindow(QMainWindow):
                 if i % 2 == 0: #if it's an even index, we know that it is a web address
                     if sData[i] not in history:
                         lineWeb += sData[i] + "\n" #add the current web address to the list of web addresses
+                        #sData[i]= sData[i].strip()
                         history.append(sData[i])
                         last = True
                     else:
