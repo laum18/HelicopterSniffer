@@ -21,6 +21,11 @@ while True:
             toggle = True
             add = False
             for c in content:
+                www = c.find("www.")
+                if www != -1:
+                    c = c[www+4:]
+
+                c = c.strip()
                 if toggle:
                     if c not in data:
                         data.append(c)

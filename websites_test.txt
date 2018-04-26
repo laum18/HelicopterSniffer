@@ -10,6 +10,8 @@
 
  nike.com, Tue Apr 24 22:56:50 2018
 
+ www.nike.com, Tue Apr 24 22:56:50 2018
+
  nike.com, Tue Apr 24 22:56:50 2018
 
  nike.com, Tue Apr 24 22:56:50 2018
