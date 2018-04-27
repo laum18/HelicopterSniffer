@@ -13,7 +13,7 @@ class DataLaunch(threading.Thread):
 
 class SendToParent():
     def run(self):
-        os.system("py sendToParent.py")
+        os.system("python3.6 sendToParent.py")
 
 if __name__ == "__main__":
     dl = DataLaunch()
